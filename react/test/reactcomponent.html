@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="application/javascript" src="../js/react.development.js"></script>
+<script type="application/javascript" src="../js/react-dom.development.js"></script>
+<script type="application/javascript" src ="../js/babel.min.js"></script>
+<script type="text/babel">
+
+    function formaName(name2){
+        return name2.firstname +' ' +name2.lastname;
+    }
+    const name2 = {
+        firstname: 'zhang',
+        lastname: 'jun'
+    };
+    // jmx中可使用{} 取变量和函数的值
+    //const name = 'Josh Perez';
+    //const element = <h1>Hello, {name}</h1>;
+    const element =(
+        <h1>
+            hello, {formaName(name2)}
+        </h1>);
+
+    ReactDOM.render(
+        element,
+        document.getElementById("root")
+    );
+</script>
+</body>
+</html>

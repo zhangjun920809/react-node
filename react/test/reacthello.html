@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id ="like_button_container" > </div>
+<div id ="listname" > </div>
+
+<script type="application/javascript" src="../js/react.development.js"></script>
+<script type="application/javascript" src="../js/react-dom.development.js"></script>
+<script type="application/javascript" src ="../js/babel.min.js"></script>
+<script type="text/babel">
+    //1.1创建虚拟DOM
+    const vr=<h2> hello world</h2>
+    //1.2渲染虚拟DOM
+    ReactDOM.render(
+        vr,
+        document.getElementById('like_button_container')
+    );
+    //2动态展现列表 数组的map方法很常用
+    const names=["react","vue","node","java"];
+    //2.1创建虚拟DOM
+    const ul=(
+        names.map((name) => <li> {name}</li>)
+    )
+    //2.2渲染虚拟DOM
+    ReactDOM.render(
+        ul,
+        document.getElementById('listname')
+    );
+</script>
+</body>
+</html>
