@@ -7,28 +7,64 @@
 <body>
 
 <div id = "root"></div>
+<div id = "root1"></div>
+
 <script type="application/javascript" src="../js/react.development.js"></script>
 <script type="application/javascript" src="../js/react-dom.development.js"></script>
 <script type="application/javascript" src ="../js/babel.min.js"></script>
+<script type="application/javascript" src ="../js/prop-types.js"></script>
 <script type="text/babel">
+    //需求  如果性别和年龄没有指定，默认为 男 和 18
     //定义组件
-    class Mycomponent extends React.component{
+    class MyComponent extends React.Component{
         constructor(props) {
             super(props);
             console.log(props)
         }
-        handlerclick(event){
-
-        }
         render() {
-            console.log(this)
+            console.log(this.props)
             return (
-                <h2>hello</h2>
+                <ul>
+                    <li>姓名：{this.props.name}</li>
+                    <li>性别：{this.props.gender}</li>
+                    <li>年龄：{this.props.age}</li>
+                </ul>
             )
         }
     }
+    //给组件绑定默认属性
+    MyComponent.defaultProps = {
+        gender:"女",
+        age:20
+    }
+    //指定组件属性的必要性和类型
+    MyComponent.propTypes = {
+        name:PropTypes.string.isRequired,//name 属性是必须的
+        age:PropTypes.number,//age 类型必须是number类型
+    }
+    //定义对象
+    const students = {
+        name:"zhang",
+        gender:'男',
+        age:30
+    };
+    //定义对象
+    const students1 = {
+        name:"waning",
+    };
+    /*
+    ... 的作用
+    1、打包
+    定义：function fn(...as){}   传参：fn(1,2,3)  类似java中的 ... 传参
+    2、解包
+    const arr1 =[1,2,3]  const arr2 = [7,...arr1,9]
+     */
 
-    ReactDOM.render(<Mycomponent />,document.getElementById("root"))
+    //ReactDOM.render(<MyComponent name={students.name} gender={students.gender} age ={students.age}/>,document.getElementById("root"))
+    //此种写法效果 同上
+    ReactDOM.render(<MyComponent {...students}/>,document.getElementById("root"))
+    //不指定的属性就使用默认的
+    ReactDOM.render(<MyComponent name={students.name} />,document.getElementById("root1"))
 </script>
 
 </body>

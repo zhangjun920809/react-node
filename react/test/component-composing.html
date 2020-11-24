@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id = "root"></div>
+<script type="application/javascript" src="../js/react.development.js"></script>
+<script type="application/javascript" src="../js/react-dom.development.js"></script>
+<script type="application/javascript" src ="../js/prop-types.js"></script>
+<script type="application/javascript" src ="../js/babel.min.js"></script>
+<script type="text/babel">
+    class App extends React.Component{
+        constructor(props) {
+            super(props);
+            this.state ={
+                todos:["吃饭","睡觉","打游戏"]
+            }
+            //this.addTodo = this.addTodo.bind(this)
+        }
+        addTodo(todo){
+            const {todos} = this.state
+            //unshift（）方法 向数组的开头添加一个或者多个元素
+            todos.unshift(todo)
+            this.setState({todos})
+        }
+        render(){
+            const {todos} = this.state
+            return (
+                // addTodo={addTodo}  将父组件的addTodo方法传递给子组件
+                <div>
+                    <h1>simple TODO list</h1>
+                    {/* 将父组件的count 和addTodo方法传递给子组件*/}
+                    <Add count={todos.length} addTodo={this.addTodo.bind(this)}/>
+                    <List todos={todos}/>
+                </div>)
+        }
+    }
+    class Add extends React.Component{
+        constructor(props) {
+            super(props);
+            this.add = this.add.bind(this)
+            this.myRef = React.createRef();
+        }
+        //在子组件中改变父组件的状态，不能直接改
+        add(){
+            //1读取输入的数据
+            const ref = this.myRef.current.value
+            //2调用父类的方法更新state
+            this.props.addTodo(ref)
+            console.log(ref)
+        }
+        render(){
+            return (
+            <div>
+                <input type="text" ref={this.myRef}/>
+                <button onClick={this.add}>add #{this.props.count+1}</button>
+            </div>
+            )
+        }
+    }
+    //为组件属性指定类型 是否必须
+    Add.propTypes ={
+        //父组件传递的属性
+        count:PropTypes.number.isRequired,
+        //父组件传递过来父组件的方法
+        addTodo:PropTypes.func.isRequired
+    }
+    class List extends React.Component{
+
+        render(){
+            const {todos} = this.props
+            return (
+                <ul>
+                    {
+                        todos.map((todo,index) => <li key={index}> {todo} </li>)
+                    }
+                </ul>
+                )
+        }
+    }
+    //为组件属性指定类型 是否必须
+    List.propTypes ={
+        todos:PropTypes.array.isRequired
+    }
+
+    ReactDOM.render(<App />,document.getElementById("root"));
+</script>
+</body>
+</html>
