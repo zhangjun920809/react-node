@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id = "root"></div>
+<div id = "root1"></div>
+<script type="application/javascript" src="../js/react.development.js"></script>
+<script type="application/javascript" src="../js/react-dom.development.js"></script>
+<script type="application/javascript" src ="../js/babel.min.js"></script>
+<script type="text/babel">
+ function ActionLink() {
+     function handleClick(e) {
+         //阻止默认行为。e是一个合成事件
+        e.preventDefault();
+        console.log("连接被点击")
+     }
+     return (
+         <a href="#" onClick={handleClick}> 点我</a>
+     )
+ }
+
+ //事件处理
+ class Toggle extends React.Component{
+     constructor(porps) {
+         super(porps);
+         this.state = {
+             isToggleOn:false
+         }
+         //this.handleClick = this.handleClick.bind(this)
+         //下面的操作和上面的操作效果一样。
+         //<button onClick={this.handleClick.bind(this)}>
+     }
+     handleClick() {
+         //const sta = !this.state.isToggleOn.
+         // this.setState({
+         //     isToggleOn:sta
+         // })
+         //下面es6箭头函数，效果同上。pre?
+         this.setState(pre => ({
+             isToggleOn:!pre.isToggleOn
+         }))
+     }
+     render (){
+         return (
+             <button onClick={this.handleClick.bind(this)}>
+                 {this.state.isToggleOn ?"on":"off"}
+             </button>
+         )
+    }
+ }
+
+ ReactDOM.render(<ActionLink />,document.getElementById("root"))
+ ReactDOM.render(<Toggle />,document.getElementById("root1"))
+</script>
+</body>
+</html>

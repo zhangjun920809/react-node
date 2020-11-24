@@ -93,6 +93,9 @@
       <workItem from="1605618698455" duration="3169000" />
       <workItem from="1605747588405" duration="1976000" />
       <workItem from="1605761843607" duration="958000" />
+      <workItem from="1605838286815" duration="615000" />
+      <workItem from="1606180896730" duration="33000" />
+      <workItem from="1606192439706" duration="2646000" />
     </task>
     <servers />
   </component>
@@ -104,6 +107,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="369" y="191" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1605144235608" />
+    <state x="403" y="96" key="FileChooserDialogImpl" timestamp="1605839025507">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="403" y="96" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1605839025507" />
     <state width="1303" height="234" key="GridCell.Tab.0.bottom" timestamp="1605249791822">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
